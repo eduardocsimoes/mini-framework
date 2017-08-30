@@ -49,6 +49,7 @@ class Router {
 
 		//Loop em todos os routers
 		foreach ($type as $pt => $func) {
+
 			//Identifica os argumentos e substitui po r regex
 			$pattern = preg_replace('(\{[a-z0-9]{0,}\})', '([a-z0-9]{0,})', $pt);
 
@@ -71,6 +72,13 @@ class Router {
 
 				$func($arg);
 				break;
+
+			} else {
+
+				if ($pt == 404) {
+					$func(array());
+					break;
+				}
 			}
 		}
 	}

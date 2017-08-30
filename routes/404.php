@@ -1,0 +1,9 @@
+<?php 
+	$this->get('404', function($arg){
+
+		$array = array();
+
+		$tpl = $this->core->loadModule('template');
+		$tpl->render('404', $array);
+	});
+?>

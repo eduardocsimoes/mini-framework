@@ -49,9 +49,10 @@
 
 			//Loop em todos os routers
 			foreach ($type as $pt => $func) {
+
 				//Identifica os argumentos e substitui po r regex
 				$pattern = preg_replace('(\{[a-z0-9]{0,}\})','([a-z0-9]{0,})', $pt);
-				
+
 				//faz o match de url
 				if(preg_match("#^(".$pattern.")*$#i", $url, $matches) === 1){
 					array_shift($matches);
@@ -68,9 +69,16 @@
 					foreach ($matches as $key => $match) {
 						$arg[$itens[$key]] = $match;
 					}
-					
+
 					$func($arg);
 					break;
+
+				}else{
+
+					if($pt == 404){
+						$func(array());
+						break;
+					}
 				}
 			}
 		}

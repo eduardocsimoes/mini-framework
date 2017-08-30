@@ -1,0 +1,10 @@
+<?php
+$config = array(
+	'db'      => array(
+		'db'     => 'localhost',
+		'user'   => 'root',
+		'pass'   => '',
+		'dbname' => 'mini'
+	)
+);
+?>
